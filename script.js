@@ -16,40 +16,43 @@ window.addEventListener('load', function(){
 
       //validation alerts
       if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
-         window.alert("All fields required, dumbass");
+         window.alert("All fields required, dumbass.");
          event.preventDefault();
       } else if (isNaN(Number(pilotInput.value)) === false) {
-         window.alert('Pilot name may not be a number');
+         window.alert('Pilot name may not be a number.');
          event.preventDefault();
       } else if (isNaN(Number(copilotInput.value)) === false) {
-         window.alert('Co-pilot name may not be a number');
+         window.alert('Co-pilot name may not be a number.');
          event.preventDefault();
       } else if (isNaN(fuelInput.value)) {
-         window.alert('Fuel level must be a number');
+         window.alert('Fuel level must be a number.');
          event.preventDefault();
       } else if (isNaN(cargoInput.value)) {
-         window.alert('Cargo mass must be a number');
+         window.alert('Cargo mass must be a number.');
          event.preventDefault();
       }
 
       //updating shuttle requirements
-      pilotStatus.innerHTML(`${pilotInput.value}`);
-      copilotStatus.innerHTML(`${copilotInput.value}`);
+      pilotStatus.innerHTML = `${pilotInput.value} is ready for launch.`;
+      copilotStatus.innerHTML = `${copilotInput.value} is ready for launch.`;
       if (fuelInput.value<10000) {
          faultyItems.style.visibility = 'visible';
-         fuelStatus.innerHTML("There is not enough fuel for the journey.");
-         launchStatus.innerHTML('Shuttle not ready for launch').style.color = 'red';
+         fuelStatus.innerHTML = "There is not enough fuel for the journey.";
+         launchStatus.innerHTML = 'Shuttle not ready for launch.';
+         launchStatus.style.color = 'red';
       } else if (cargoInput.value>10000) {
          faultyItems.style.visibility = 'visible';
-         cargoStatus.innerHTML('There is too much mass for the shuttle to take off.');
-         launchStatus.innerHTML('Shuttle not ready for launch').style.color = 'red';
+         cargoStatus.innerHTML = 'There is too much mass for the shuttle to take off.';
+         launchStatus.innerHTML = 'Shuttle not ready for launch.';
+         launchStatus.style.color = 'red';
       } else {
-         launchStatus.innerHTML('Shuttle is ready for launch').style.color = 'green';
+         faultyItems.style.visibility = 'visible';
+         launchStatus.innerHTML = 'Shuttle is ready for launch.';
+         launchStatus.style.color = 'green';
       }
 
       //fetching planetary data
    });
-   event.preventDefault();
 });
 
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!
